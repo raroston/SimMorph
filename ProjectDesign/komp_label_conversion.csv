@@ -1,0 +1,51 @@
+Structure,Label,Organ_Masks
+left lung,1,1
+right lung: cranial lobe,2,2
+right lung: middle lobe,3,2
+right lung: caudal lobe,4,2
+right lung: accessory lobe,5,2
+left kidney,6,3
+right kidney,7,4
+stomach wall,8,5
+stomach lumen,9,5
+medial lobe of liver,10,6
+left lobe of liver ,11,6
+right lobe of liver,12,6
+caudate lobe of liver,13,6
+left adrenal,14,7
+right adrenal,15,8
+rectum/hindgut,16,9
+bladder,17,10
+heart: left ventricle,18,11
+heart: right ventricle,19,11
+left thymic rudiment,20,12
+right thymic rudiment,21,13
+brain: third ventricle,22,14
+brain: mesencephalic vesicle,23,14
+brain: fourth ventricle,24,14
+brain: cerebral aqueduct,25,14
+brain: left lateral ventricle,26,14
+brain: right lateral ventricle,27,14
+brain: right olfactory bulb,28,14
+brain: left olfacotory bulb,29,14
+brain: right thalamus ,30,14
+brain: left thalamus,31,14
+brain: right hypothamalus ,32,14
+brain: left hypothalmus,33,14
+brain: right septal area,34,14
+brain: left septal area,35,14
+brain: left neopallial cortex abd amygdala,36,14
+brain: right neopallial cortex and amygdala,37,14
+"brain: right striatum (caudate-putamen, globus pallidus)",38,14
+"brain: left striatum  (caudate-putamen, globus pallidus)",39,14
+"brain: right ventricular zone, hippocampus, medial ganglionic eminence, lateral ganglionic ",40,14
+"brain: left ventricular zone, hippocampus, medial ganglionic eminence, lateral ganglionic ",41,14
+pons,42,15
+left cerebellar primordium ,43,16
+right cerebellar primordium,44,17
+midbrain,45,18
+medulla oblongata,46,19
+spinal cord,47,20
+vertebrae,48,21
+heart: left ventricle chamber,102,11
+heart: right ventricle chamber,103,11

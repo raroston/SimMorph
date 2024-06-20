@@ -1,0 +1,77 @@
+{
+    "@schema": "https://raw.githubusercontent.com/slicer/slicer/master/Modules/Loadable/Markups/Resources/Schema/markups-schema-v1.0.3.json#",
+    "markups": [
+        {
+            "type": "Fiducial",
+            "coordinateSystem": "LPS",
+            "coordinateUnits": "mm",
+            "locked": false,
+            "fixedNumberOfControlPoints": false,
+            "labelFormat": "%N-%d",
+            "lastUsedControlPointNumber": 5,
+            "controlPoints": [
+                {
+                    "id": "1",
+                    "label": "Top of head",
+                    "description": "",
+                    "associatedNodeID": "",
+                    "position": "",
+                    "orientation": [-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0],
+                    "selected": true,
+                    "locked": false,
+                    "visibility": true,
+                    "positionStatus": "undefined"
+                },
+                {
+                    "id": "2",
+                    "label": "Left eye",
+                    "description": "",
+                    "associatedNodeID": "",
+                    "position": "",
+                    "orientation": [-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0],
+                    "selected": true,
+                    "locked": false,
+                    "visibility": true,
+                    "positionStatus": "undefined"
+                },
+                {
+                    "id": "3",
+                    "label": "Right eye",
+                    "description": "",
+                    "associatedNodeID": "",
+                    "position": "",
+                    "orientation": [-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0],
+                    "selected": true,
+                    "locked": false,
+                    "visibility": true,
+                    "positionStatus": "undefined"
+                },
+                {
+                    "id": "4",
+                    "label": "Cleft of upper jaw",
+                    "description": "",
+                    "associatedNodeID": "",
+                    "position": "",
+                    "orientation": [-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0],
+                    "selected": true,
+                    "locked": false,
+                    "visibility": true,
+                    "positionStatus": "undefined"
+                },
+                {
+                    "id": "5",
+                    "label": "Genital near tail",
+                    "description": "",
+                    "associatedNodeID": "",
+                    "position": "",
+                    "orientation": [-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0],
+                    "selected": true,
+                    "locked": false,
+                    "visibility": true,
+                    "positionStatus": "undefined"
+                }
+            ],
+            "measurements": []
+        }
+    ]
+}
