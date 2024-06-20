@@ -1,0 +1,100 @@
+{
+    "@schema": "https://raw.githubusercontent.com/slicer/slicer/master/Modules/Loadable/Markups/Resources/Schema/markups-schema-v1.0.3.json#",
+    "markups": [
+        {
+            "type": "Plane",
+            "coordinateSystem": "LPS",
+            "coordinateUnits": "mm",
+            "locked": false,
+            "fixedNumberOfControlPoints": false,
+            "labelFormat": "%N-%d",
+            "lastUsedControlPointNumber": 3,
+            "planeType": "threePoints",
+            "sizeMode": "absolute",
+            "autoScalingFactor": 1.0,
+            "center": [-0.7745221853256226, 0.5601264238357544, -4.427872657775879],
+            "normal": [-0.9961666242718729, -0.08551567758092724, -0.018415362463339175],
+            "objectToBase": [-1.0, -0.0, -0.0, -0.0, -0.0, -1.0, -0.0, -0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+            "baseToNode": [0.03512376346318726, 0.08011477970364353, -0.9961666242718729, -0.7745221853256226, -0.19821803931400945, -0.9764203386750938, -0.08551567758092724, 0.5601264238357544, -0.9795284223189706, 0.2004618275249729, -0.018415362463339175, -4.427872657775879, 0.0, 0.0, 0.0, 1.0],
+            "orientation": [0.03512376346318726, 0.08011477970364353, -0.9961666242718729, -0.19821803931400945, -0.9764203386750938, -0.08551567758092724, -0.9795284223189706, 0.2004618275249729, -0.018415362463339175],
+            "size": [17.829489125883634, 11.898423688553735, 0.0],
+            "planeBounds": [-5.212274432366639, 12.617214693516992, -2.943679236363457, 8.954744452190277],
+            "controlPoints": [
+                {
+                    "id": "1",
+                    "label": "P_1-1",
+                    "description": "",
+                    "associatedNodeID": "",
+                    "position": [-0.7745221853256226, 0.5601264238357544, -4.427872657775879],
+                    "orientation": [-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0],
+                    "selected": true,
+                    "locked": false,
+                    "visibility": true,
+                    "positionStatus": "defined"
+                },
+                {
+                    "id": "2",
+                    "label": "P_1-2",
+                    "description": "",
+                    "associatedNodeID": "",
+                    "position": [-0.45393097400665285, -1.2491034269332886, -13.368492126464844],
+                    "orientation": [-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0],
+                    "selected": true,
+                    "locked": false,
+                    "visibility": true,
+                    "positionStatus": "defined"
+                },
+                {
+                    "id": "3",
+                    "label": "P_1-3",
+                    "description": "",
+                    "associatedNodeID": "",
+                    "position": [-0.009828356094658375, -8.094985961914063, -5.601603031158447],
+                    "orientation": [-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0],
+                    "selected": true,
+                    "locked": false,
+                    "visibility": true,
+                    "positionStatus": "defined"
+                }
+            ],
+            "measurements": [
+                {
+                    "name": "area",
+                    "enabled": false,
+                    "units": "cm2",
+                    "printFormat": "%-#4.4g%s"
+                }
+            ],
+            "display": {
+                "visibility": false,
+                "opacity": 1.0,
+                "color": [0.4, 1.0, 0.0],
+                "selectedColor": [1.0, 0.5000076295109484, 0.5000076295109484],
+                "activeColor": [0.4, 1.0, 0.0],
+                "propertiesLabelVisibility": true,
+                "pointLabelsVisibility": false,
+                "textScale": 3.0,
+                "glyphType": "Sphere3D",
+                "glyphScale": 3.0,
+                "glyphSize": 5.0,
+                "useGlyphScale": true,
+                "sliceProjection": false,
+                "sliceProjectionUseFiducialColor": true,
+                "sliceProjectionOutlinedBehindSlicePlane": false,
+                "sliceProjectionColor": [1.0, 1.0, 1.0],
+                "sliceProjectionOpacity": 0.6,
+                "lineThickness": 0.2,
+                "lineColorFadingStart": 1.0,
+                "lineColorFadingEnd": 10.0,
+                "lineColorFadingSaturation": 1.0,
+                "lineColorFadingHueOffset": 0.0,
+                "handlesInteractive": true,
+                "translationHandleVisibility": false,
+                "rotationHandleVisibility": false,
+                "scaleHandleVisibility": true,
+                "interactionHandleScale": 3.0,
+                "snapMode": "toVisibleSurface"
+            }
+        }
+    ]
+}
