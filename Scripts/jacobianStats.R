@@ -1,4 +1,4 @@
-# Jacobian Analysis
+# Tensor Based Morphometry
 # R.A. Roston & A.M. Maga
 # 2024-03-28
 
