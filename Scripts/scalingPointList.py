@@ -1,3 +1,6 @@
+# To scale pseudoLM set for heart simulations in 3D Slicer
+# Author: Sara M. Rolfe
+
 import numpy as np
 
 def convertFudicialToNP(fnode):
