@@ -1,3 +1,4 @@
+# Calculate heart volumes from ANTs labelStats function
 # Author: Rachel A. Roston, Ph.D.
 # Date: 2024-03-15
 
@@ -20,9 +21,9 @@ experiments = c("Heart173",
 
 addvols = c(19,20,50,51) # labels to combine into new column (e.g., TotalHeart is c(19,20,50,51))
 addvols.name = "TotalHeart" # name of new column (e.g. "TotalHeart")
-dir.vol.results = "/home2/rachel/P01/syntheticdata/Github/SimMorph/Results/OrganVolumes/"
+dir.vol.results = "/SimMorph/Results/OrganVolumes/"
 
-wd = "/home2/rachel/P01/syntheticdata/Github/SimMorph/Results/OrganVolumes/labelStats/"
+wd = "/SimMorph/Results/OrganVolumes/labelStats/"
 setwd(wd)
 
 for(j in 1:length(experiments)){
@@ -59,7 +60,7 @@ experiments = c("Heart51",
                 "Heart116",
                 "Heart133",
                 "Heart173")
-labelNames = read.csv("/home2/rachel/P01/syntheticdata/Github/SimMorph/ProjectDesign/komp_label_conversion.csv")
+labelNames = read.csv("/SimMorph/ProjectDesign/komp_label_conversion.csv")
 
 
 
