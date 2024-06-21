@@ -1,3 +1,5 @@
+# Registration function
+# Author: Rachel A. Roston, Ph.D.
 
 doRegistration = function(subject, 
                           ref.img.path,
