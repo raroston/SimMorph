@@ -1,3 +1,4 @@
+# Calculate & save labelStats from MEMOS segmentations
 # Author: Rachel A. Roston, Ph.D.
 # Date: 2024-03-15
 
