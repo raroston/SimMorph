@@ -22,4 +22,4 @@ This repository contains data and scripts for "The use of morphological simulati
    - Click "Apply"
    - Repeat this for each set of CT volumes (original baseline CT volumes and simulated CT volumes)
    - Calculate the organ volumes and heart volumes with [save_labelstats.R](https://github.com/raroston/SimMorph/blob/main/Scripts/save_labelstats.R)
-   - Calculate the heart volumes with [save_volstats_plot.R)(https://github.com/raroston/SimMorph/blob/main/Scripts/save_volstats_plot.R)
+   - Calculate the heart volumes with [save_volstats_plot.R](https://github.com/raroston/SimMorph/blob/main/Scripts/save_volstats_plot.R)
