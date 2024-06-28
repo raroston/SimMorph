@@ -1,42 +1,32 @@
 
 # e15 Embryo Registrations in Parallel for original images
 # Authors: R.A. Roston & A.M. Maga
-# Date: 2023-07-13
 
 library(doParallel)
 library(foreach)
 library(ANTsR)
 
 # SETUP
-
-projectDirectory = "/SimMorph/"
-wd = "/SimMorph/Data/original/"
-setwd(wd)
-
-file.subjects = "/SimMorph/ProjectDesign/subjects.csv"
-images = paste0(wd, "CT/")
-landmarks = paste0(wd, "LMs/")
+dir.original = "./Data/baseline"
+images = "CT"
+landmarks = "LMs"
+subjects = read.csv("./ProjectDesign/subjects.csv")[,2]
+ref = "./Data/Reference/Embryo_Atlas.nii"
+reflms= "./Data/Reference/Embryo_Atlas.mrk.json"
 
 save.TotalTransforms = TRUE
 save.CT_transformed = TRUE
 save.Jacobian = FALSE
 
-
 # FUNCTIONS
-
 source("/Scripts/doRegistration.R")
 
-
-# Create vector of subjects
-
-subjects = read.csv(file.subjects)
-subjects = subjects[,2]
-
-if( dir.exists(paste0(wd, "/Transforms/")) ){
-  if( dir.exists(paste0(wd, "/Transforms/affine/")) ){
-    done = dir(paste0(wd, "Transforms/affine/"))
+# Generate list of subjects to be registered
+if( dir.exists(dir.original, "/Transforms/")){
+  if( dir.exists(dir.original, "/Transforms/affine/")){
+    done = dir(dir.original, "/Transforms/affine/")
     done = gsub("_Affine.mat", "", done)
-    subjects = subjects[which( ! subjects %in% done)]
+    subjects = subjects[which(! subjects %in% done)]
   }
 }
 
@@ -65,11 +55,11 @@ Sys.setenv(ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS = nthreads)
 registerDoParallel(cl)
 
 foreach (i = 1:length(subjects)) %dopar% {doRegistration(subject = subjects[i],
-                                                         ref.img.path = paste0(projectDirectory, "/Data/Reference/Embryo_Atlas.nii.gz"),
-                                                         ref.lms.path = paste0(projectDirectory, "/Data/Reference/Embryo_Atlas.mrk.json"),
+                                                         ref.img.path = ref,
+                                                         ref.lms.path = reflms,
                                                          dir.imgs = images,
                                                          dir.lms = landmarks,
-                                                         dir.out = wd,
+                                                         dir.out = dir.original,
                                                          save.TotalTransforms = TRUE,
                                                          save.CT_transformed = TRUE,
                                                          save.Jacobian = FALSE,

@@ -1,4 +1,4 @@
-# SimulatedMorphology
+# Simulated Morphology
 
 This repository contains data and scripts for "The use of morphological simulation to test the limits on phenotype discovery in 3D image analysis": 
 

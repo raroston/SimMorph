@@ -1,40 +1,40 @@
 
-# e15 Embryo Registrations in Parallel for simulated images
+# e15 Embryo Registrations in Parallel for simulated morphology images
 # Authors: R.A. Roston & A.M. Maga
-# Date: 2023-07-13
 
 library(doParallel)
 library(foreach)
 library(ANTsR)
 
 # SETUP
+dir.data = "./Data/"
+images = "CT"
+landmarks = "LMs"
+subjects = read.csv("./ProjectDesign/subjects.csv")[,2]
+simulations = read.csv("./ProjectDesign/experimentlist.csv")[,2]
+ref = "./Data/Reference/Embryo_Atlas.nii"
+reflms= "./Data/Reference/Embryo_Atlas.mrk.json"
 
-projectDirectory = "/SimMorph/"
-wd = "/SimMorph/Data/Rostrum/"
-setwd(wd)
-
-file.subjects = "/SimMorph/ProjectDesign/subjects.csv"
-images = paste0(wd, "CT/")
-landmarks = paste0(wd, "LMs/")
-
+save.TotalTransforms = TRUE
+save.CT_transformed = TRUE
+save.Jacobian = TRUE
 
 # FUNCTIONS
-
 source("/Scripts/doRegistration.R")
 
-
-# Create vector of subjects
-
-subjects = read.csv(file.subjects)
-subjects = subjects[,2]
-
-if( dir.exists(paste0(wd, "/Transforms/")) ){
-  if( dir.exists(paste0(wd, "/Transforms/affine/")) ){
-    done = dir(paste0(wd, "Transforms/affine/"))
-    done = gsub("_Affine.mat", "", done)
-    subjects = subjects[which( ! subjects %in% done)]
+# Generate list of subjects to be registered
+done = vector()
+for(i in 1:length(simulations)){
+  if( dir.exists(paste0(dir.data, "/", simulations[i], "/Transforms/"))){
+    if( dir.exists(paste0(dir.data, "/", simulations[i], "/Transforms/affine/"))){
+      tmp = dir(paste0(dir.data, "/", simulations[i], "/Transforms/affine/"))
+      tmp = gsub("_Affine.mat", "", tmp)
+      done = c(done,tmp)
+    }
   }
 }
+allsubs = paste0(rep(subjects,each=length(simulations)),"_", simulations)
+toDo = allsubs[which(!allsubs %in% done)]
 
 # Check files exist for all subjects
 if(!all(file.exists(paste0(images, subjects, ".nrrd")))){
@@ -61,14 +61,14 @@ Sys.setenv(ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS = nthreads)
 registerDoParallel(cl)
 
 foreach (i = 1:length(subjects)) %dopar% {doRegistration(subject = subjects[i],
-                                                         ref.img.path = paste0(projectDirectory, "/Data/Reference/Embryo_Atlas.nii.gz"),
-                                                         ref.lms.path = paste0(projectDirectory, "/Data/Reference/Embryo_Atlas.mrk.json"),
+                                                         ref.img.path = ref,
+                                                         ref.lms.path = reflms,
                                                          dir.imgs = images,
                                                          dir.lms = landmarks,
-                                                         dir.out = wd,
+                                                         dir.out = dir.original,
                                                          save.TotalTransforms = TRUE,
                                                          save.CT_transformed = TRUE,
-                                                         save.Jacobian = TRUE,
+                                                         save.Jacobian = FALSE,
                                                          test = FALSE)
 }
 
