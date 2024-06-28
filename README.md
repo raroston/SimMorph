@@ -4,8 +4,8 @@ This repository contains data and scripts for "The use of morphological simulati
 
 ## Detailed instructions to reproduce the analysis in "The use of morphological simulation to test the limits on phenotype discovery in 3D image analysis":
 ### Setup, registration, and generation of simulated morphology data
-1. Make a local copy of this repository
-2. Run [setup_templateDownload.R](https://github.com/raroston/SimMorph/blob/main/Scripts/setup_templateDownload.R) to set up the directory structure and download the Wong et al. (2012) reference image.
+1. Make a local copy of this repository. Run this analysis from the repositories directory: "./SimMorph/"
+2. Run [SimMorph_setup_templateDownload.R](https://github.com/raroston/SimMorph/blob/main/Scripts/setup_templateDownload.R) to set up the directory structure and download the Wong et al. (2012) reference image.
 3. Download the 30 baseline subjects from www.mousephenotype.org/embryoviewer/:
    - Search for any gene in the Interactive Embryo Viewer (e.g., "Acvr2a")
    - Click on the **Download embryo data** button
@@ -19,11 +19,11 @@ This repository contains data and scripts for "The use of morphological simulati
 6. Heart volume results for each subject are in the directory **"SimMorph/Results/OrganVolumes/"**. To replicate these results from scratch:
    - Install the MEMOS extension in 3D Slicer
    - To run MEMOS on baseline and simulated CT data, navigate to the MEMOS module in 3D Slicer and click on the "Batch mode" tab. 
-   - Set the directories:
+   - Set the directories (you will need to create the MEMOS output directories):
      - Volume directory: **"SimMorph/Data/[folder]/CT/"** (e.g., "/SimMorph/Data/baseline/CT/")
      - Output directory: **"SimMorph/Data/[folder]/MEMOS/"** (e.g., "/SimMorph/Data/baseline/MEMOS/")
    - Click "Apply"
-   - Repeat this for each set of CT volumes (original baseline CT volumes and simulated CT volumes)
+   - Repeat this for each set of CT volumes (all original baseline CT volumes and simulated CT volumes)
    - Calculate the organ volumes and heart volumes with [save_labelstats.R](https://github.com/raroston/SimMorph/blob/main/Scripts/save_labelstats.R)
    - Calculate the heart volumes with [save_volstats_plot.R](https://github.com/raroston/SimMorph/blob/main/Scripts/save_volstats_plot.R)
 

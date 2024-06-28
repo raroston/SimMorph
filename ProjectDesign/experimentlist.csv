@@ -1,8 +1,9 @@
-"","simulation","description"
-"1","Heart173","heart ventricle volume x173%"
-"2","Heart133","heart ventricle volume x133%"
-"3","Heart116","heart ventricle volume x116%"
-"4","Heart51","heart ventricle volume x51%"
-"5","Heart73","heart ventricle volume x73%"
-"6","Heart85","heart ventricle volume x85%"
-"7","Rostrum120","rostrum length x120%"
+,simulation,heartscale_percentoriginal,est_heartscale,description
+1,baseline,100,100%,original
+2,Heart173,173,~173%,heart ventricle volume x173%
+3,Heart133,133,~133%,heart ventricle volume x133%
+4,Heart116,116,~116%,heart ventricle volume x116%
+5,Heart51,51,~51%,heart ventricle volume x51%
+6,Heart73,73,~73%,heart ventricle volume x73%
+7,Heart85,85,~85%,heart ventricle volume x85%
+8,Rostrum120,NA,NA,rostrum length x120%

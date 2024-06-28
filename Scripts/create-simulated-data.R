@@ -5,19 +5,15 @@ library(ANTsR)
 library(ANTsRCore)
 library(SlicerMorphR)
 
-original = "baseline"
-simulations = read.csv("./ProjectDesign/experimentlist.csv")[,2]
+# SETUP
+source("./Scripts/SimMorph_setup_variables.R")
+dir.deform = "./Deformations/LMs_merged"
 
 create.simdata = TRUE # if TRUE, simulated data will be generated from the simulated deformation
 copy.LMs = TRUE # if TRUE, LMs for registration initialization will be copied from original data
 
-dir.deform = "./Deformations/LMs_merged"
-dir.original = paste0("./Data/", original)
-images = "CT"
-landmarks = "LMs"
-subjects = read.csv("./ProjectDesign/subjects.csv")[,2]
-ref.img = antsImageRead("./Data/Reference/Embryo_Atlas.nii")
 
+# GENERATE SIMULATED DATA
 for(j in 1:length(simulations)){
   dir.sim = paste0("./Data/", simulations[j])
   

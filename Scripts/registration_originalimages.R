@@ -7,12 +7,7 @@ library(foreach)
 library(ANTsR)
 
 # SETUP
-dir.original = "./Data/baseline"
-images = "CT"
-landmarks = "LMs"
-subjects = read.csv("./ProjectDesign/subjects.csv")[,2]
-ref = "./Data/Reference/Embryo_Atlas.nii"
-reflms= "./Data/Reference/Embryo_Atlas.mrk.json"
+source("./Scripts/SimMorph_setup_variables.R")
 
 save.TotalTransforms = TRUE
 save.CT_transformed = TRUE
