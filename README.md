@@ -25,7 +25,8 @@ This repository contains data and scripts for "The use of morphological simulati
    - Click "Apply"
    - Repeat this for each set of CT volumes (all original baseline CT volumes and simulated CT volumes)
    - Calculate the organ volumes and heart volumes with [save_labelstats.R](https://github.com/raroston/SimMorph/blob/main/Scripts/save_labelstats.R)
-   - Calculate the heart volumes with [save_volstats_plot.R](https://github.com/raroston/SimMorph/blob/main/Scripts/save_volstats_plot.R)
+   - Calculate the heart volumes with [save_volstats.R](https://github.com/raroston/SimMorph/blob/main/Scripts/save_volstats.R)
+7. To plot heart volume results in a violin plot, use [plot_volstats.R](https://github.com/raroston/SimMorph/blob/main/Scripts/plot_volstats.R)
 
 ### Tensor-based morphometry 
-7. Register the simulate morphology images to the reference image and calculate the Jacobian determinants with [registration_simulatedimages.R](https://github.com/raroston/SimMorph/blob/main/Scripts/registration_simulatedimages.R)
+8. Register the simulate morphology images to the reference image and calculate the Jacobian determinants with [registration_simulatedimages.R](https://github.com/raroston/SimMorph/blob/main/Scripts/registration_simulatedimages.R)
