@@ -135,5 +135,4 @@ doRegistration = function(subject,
                        filename = paste0(dir.jacs, jacs.file))
       }
     }
-  }
 }
