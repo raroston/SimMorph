@@ -14,7 +14,7 @@ save.CT_transformed = TRUE
 save.Jacobian = FALSE
 
 # FUNCTIONS
-source("/Scripts/doRegistration.R")
+source("./Scripts/doRegistration.R")
 
 # Generate list of subjects to be registered
 if( dir.exists(dir.original, "/Transforms/")){
