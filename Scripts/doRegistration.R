@@ -61,9 +61,9 @@ doRegistration = function(subject,
     
   }  
   
-  dir.fwd.tx = paste0(dir.out, "/Transforms/fwd/")
-  dir.affine.tx = paste0(dir.out, "/Transforms/affine/")
-  dir.inv.tx = paste0(dir.out, "/Transforms/inv/")
+  dir.fwd.tx = paste0(dir.out, "/Transforms/fwd")
+  dir.affine.tx = paste0(dir.out, "/Transforms/affine")
+  dir.inv.tx = paste0(dir.out, "/Transforms/inv")
   
   if(test == TRUE){
     
@@ -80,16 +80,16 @@ doRegistration = function(subject,
     if(!dir.exists(dir.inv.tx)) dir.create(dir.inv.tx)
     
     file.copy(from = syn1$fwdtransforms[1],
-              to = paste0(dir.fwd.tx, subject, "_Warp", ".nii.gz"))
+              to = paste0(dir.fwd.tx, "/", subject, "_Warp", ".nii.gz"))
     file.copy(from = syn1$fwdtransforms[2],
-              to = paste0(dir.affine.tx, subject, "_Affine", ".mat"))
+              to = paste0(dir.affine.tx, "/", subject, "_Affine", ".mat"))
     file.copy(from = syn1$invtransforms[2],
-              to = paste0(dir.inv.tx, subject, "_InverseWarp", ".nii.gz"))
+              to = paste0(dir.inv.tx, "/", subject, "_InverseWarp", ".nii.gz"))
     
     
     if(save.TotalTransforms == TRUE){
       
-      dir.totaltransforms = paste0(dir.out, "/TotalTransforms/")
+      dir.totaltransforms = paste0(dir.out, "/TotalTransforms")
       
       if(!dir.exists(paste0(dir.totaltransforms))){
         dir.create(paste0(dir.totaltransforms))
@@ -99,12 +99,12 @@ doRegistration = function(subject,
                                                   moving = tmp.img,
                                                   transformlist = c(syn1$fwdtransforms[1], syn1$fwdtransforms[2]), 
                                                   interpolator = "linear",
-                                                  compose = paste0(dir.totaltransforms, subject, "_Total-"))
+                                                  compose = paste0(dir.totaltransforms, "/", subject, "_Total-"))
     }
     
     if(save.CT_transformed == TRUE){
       
-      dir.img.transformed = paste0(dir.out, "/TransformedImgs/")
+      dir.img.transformed = paste0(dir.out, "/TransformedImgs")
       if(!dir.exists(paste0(dir.img.transformed))){
         dir.create(paste0(dir.img.transformed))
       } 
@@ -112,7 +112,7 @@ doRegistration = function(subject,
       composite.img <- antsApplyTransforms(fixed = ref.img,
                                            moving = tmp.img,
                                            transformlist = composite.transforms)
-      antsImageWrite(composite.img, filename = paste0(dir.img.transformed, subject, '_transformed.nrrd'))
+      antsImageWrite(composite.img, filename = paste0(dir.img.transformed, "/", subject, '_transformed.nrrd'))
     }
   }
   
@@ -121,12 +121,12 @@ doRegistration = function(subject,
     # save jacobians
     jacs.file = paste0(subject, "_Jacobian.nrrd")
     
-    dir.jacs = paste0(dir.out, "/JacobianDeterminants/")
+    dir.jacs = paste0(dir.out, "/TBM")
     if(!dir.exists(dir.jacs)) dir.create(dir.jacs)
     }
     
     if(test == TRUE){
-      print(paste0(dir.jacs, jacs.file))
+      print(paste0(dir.jacs, "/", jacs.file))
     } else {
       for (i in 1:length(warps)){
         tmp = createJacobianDeterminantImage( ref.img, syn1$fwdtransforms[1], doLog = TRUE, geom = TRUE )

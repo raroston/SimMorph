@@ -4,8 +4,8 @@ This repository contains data and scripts for "The use of morphological simulati
 
 ## Detailed instructions to reproduce the analysis in "The use of morphological simulation to test the limits on phenotype discovery in 3D image analysis":
 ### Setup, registration, and generation of simulated morphology data
-1. Make a local copy of this repository. Run this analysis from the repositories directory: "./SimMorph/"
-2. Run [SimMorph_setup_templateDownload.R](https://github.com/raroston/SimMorph/blob/main/Scripts/setup_templateDownload.R) to set up the directory structure and download the Wong et al. (2012) reference image.
+1. Make a local copy of this repository. Run this analysis from the repository directory: "./SimMorph/"
+2. Run [SimMorph_setup_templateDownload.R](https://github.com/raroston/SimMorph/blob/main/Scripts/setup_templateDownload.R) to download the Wong et al. (2012) reference image and labels and create the directory for baseline images.
 3. Download the 30 baseline subjects from www.mousephenotype.org/embryoviewer/:
    - Search for any gene in the Interactive Embryo Viewer (e.g., "Acvr2a")
    - Click on the **Download embryo data** button
@@ -30,3 +30,5 @@ This repository contains data and scripts for "The use of morphological simulati
 
 ### Tensor-based morphometry 
 8. Register the simulate morphology images to the reference image and calculate the Jacobian determinants with [registration_simulatedimages.R](https://github.com/raroston/SimMorph/blob/main/Scripts/registration_simulatedimages.R)
+9. To do the statistical analyses... This script produces images...
+10. To easily see if differences were detected, run...

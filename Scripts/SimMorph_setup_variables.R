@@ -1,6 +1,8 @@
 # Setup SimMorph Variables
 # Author: Rachel A. Roston, Ph.D.
 
+library(stringr)
+
 # Files and lists
 original = "baseline"
 simulations = read.csv("./ProjectDesign/experimentlist.csv")[,2]
@@ -11,6 +13,7 @@ reflms = "./Data/Reference/Embryo_Atlas.mrk.json"
 reflabels = "./Data/Reference/Embryo_Atlas_labels.nii"
 labelNames = read.csv("./ProjectDesign/komp_label_conversion.csv")
 heart.sims = read.csv("./ProjectDesign/experimentlist.csv")[1:7,2:4]
+samplesizes = seq(3,27,by = 3)
 
 # Directories
 dir.data = "./Data"

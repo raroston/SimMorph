@@ -1,90 +1,67 @@
 # TBM minimum sample size and permutations
 # Author: Rachel A. Roston
-# Date: 2024-06-20
 
-remove(list = ls())
-gc()
-
+# Setup
 library(ANTsR)
 library(stringr)
 
-wd = "/SimMorph/"
-setwd(wd)
+source("./Scripts/SimMorph_setup_variables.R")
+source("./Scripts/jacobianStats.R")
 
-source("Scripts/Repository/jacobianStats.R")
-source("Scripts/Repository/makePermutationSets.R")
-
-eN = 21 #for sample size n=21
-
-# Make permutations and save as a .csv
-  # maxOverlap = 15 #maximum overlapping subjects between sets
-  # sampleorder = makeSets(1:30,
-  #                       nsamples = eN,
-  #                       nsets = 5,
-  #                       overlap = maxOverlap)
-  # sampleorder = as.data.frame(sampleorder)
-  # colnames(sampleorder) <- c(paste0("Trial0", 1:5))
-  # write.csv(sampleorder, paste0(dir.out, "/N", eN, "_sampleorder.csv"))
-
-# Run TBM analysis with multiple sets of subjects, 
-ctrl = "baseline"
-experiment = c("Heart173",
-               "Heart133",
-               "Heart116",
-               "Heart51",
-               "Heart73",
-               "Heart85",
-               "Rostrum120")
-  
+ctrl = original
+experiments = simulations
 region = c("wholebody", "thorax")
-maskfile = paste0("Masks/Embryo_Atlas_mask_", region, ".nrrd")
-dir.data = "/SimMorph/Data/"
-dir.out = paste0("Results/TBM/Permutation_N",eN, "/")
-subjects = read.csv("/SimMorph/Project_Design/subjects.csv")[,2]
-
-if(!dir.exists(dir.out)) dir.create(dir.out)
-
-# Read jacs
-sampleorder = paste0(dir.out, "/N", eN, "_sampleorder.csv")
-ctrls = vector()
-jacs.ctrls = list()
-
-ctrls = paste0(dir.data, "/", ctrl, "/TBM/", subjects, "_", ctrl, "_Jacobian.nrrd")
-file.exists(ctrls)
-for(i in 1:length(ctrls)) jacs.ctrls[[i]] = antsImageRead(ctrls[i])
+maskfiles = paste0("./Masks/Embryo_Atlas_mask_", region, ".nrrd")
 
 
-for(z in 1:length(experiment)){
+# Run TBM analysis with multiple sets of subjects
+
+for(i in 1:length(samplesizes)){
+  eN = str_pad(samplesizes[i], 2, "left", "0")
+  sampleorder = paste0(dir.out, "/N", eN, "_sampleorder.csv")
+
+  dir.out = paste0("./Results/TBM/Permutation_N",eN, "/")
+  if(!dir.exists(dir.out)) dir.create(dir.out)
   
-  for(m in 1:length(maskfile)){
-    
-    print(paste("Maskfile exists:", file.exists(maskfile[m])))
-    mask = antsImageRead(maskfile[m])
-    
-    for(k in 1:ncol(sampleorder)){
-      muts = vector()
-      jacs.muts = list()
-      jacs = list()
+  # Read jacs
+  ctrls = vector()
+  jacs.ctrls = list()
+  
+  ctrls = paste0(dir.data, "/", ctrl, "/TBM/", subjects, "_", ctrl, "_Jacobian.nrrd")
+  file.exists(ctrls)
+  for(j in 1:length(ctrls)) jacs.ctrls[[j]] = antsImageRead(ctrls[j])
+  
+  for(z in 1:length(experiments)){
+    for(m in 1:length(maskfiles)){
       
-      muts = paste0(dir.data, experiment[z], "/JacobianDeterminants/", subjects[sampleorder[,k]], "_", experiment[z], "_Jacobian.nrrd")
-      file.exists(muts)
-      for(n in 1:length(muts)) jacs.muts[[n]] = antsImageRead(muts[n])
+      print(paste("Maskfile exists:", file.exists(maskfiles[m])))
+      mask = antsImageRead(maskfiles[m])
       
-      jacs = c(jacs.ctrls, jacs.muts)
-      groupIDs = as.factor(c(rep(ctrl, length(ctrls)), rep(experiment[z], length(muts))))
-      groupIDs = relevel(groupIDs, ctrl)
-      
-      jacobianStats(jacobians = jacs, 
-                    groups = groupIDs, 
-                    binaryLabel = mask, 
-                    PadjustMethod = "fdr", 
-                    outputFolder = dir.out, 
-                    filePrefix = paste0(experiment[z], "_", ctrl, "_", 
-                                        region[m],
-                                        "_fdr_e",
-                                        eN, 
-                                        "-c30_", 
-                                        colnames(sampleorder)[k]))
+      for(k in 1:ncol(sampleorder)){
+        muts = vector()
+        jacs.muts = list()
+        jacs = list()
+        
+        muts = paste0(dir.data, "/", experiments[z], "/JacobianDeterminants/", subjects[sampleorder[,k]], "_", experiments[z], "_Jacobian.nrrd")
+        file.exists(muts)
+        for(n in 1:length(muts)) jacs.muts[[n]] = antsImageRead(muts[n])
+        
+        jacs = c(jacs.ctrls, jacs.muts)
+        groupIDs = as.factor(c(rep(ctrl, length(ctrls)), rep(experiments[z], length(muts))))
+        groupIDs = relevel(groupIDs, ctrl)
+        
+        jacobianStats(jacobians = jacs, 
+                      groups = groupIDs, 
+                      binaryLabel = mask, 
+                      PadjustMethod = "fdr", 
+                      outputFolder = dir.out, 
+                      filePrefix = paste0(experiments[z], "_", ctrl, "_", 
+                                          region[m],
+                                          "_fdr_e",
+                                          eN, 
+                                          "-c30_", 
+                                          colnames(sampleorder)[k]))
+      }
     }
   }
 }
