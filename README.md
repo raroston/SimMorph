@@ -2,7 +2,7 @@
 
 This repository contains data and scripts for "The use of morphological simulation to test the limits on phenotype discovery in 3D image analysis": 
 
-## Detailed instructions to reproduce the analysis in "The use of morphological simulation to test the limits on phenotype discovery in 3D image analysis":
+## Detailed instructions to reproduce the analysis:
 ### Setup, registration, and generation of simulated morphology data
 1. Make a local copy of this repository. Run this analysis from the repository directory: "./SimMorph/"
 2. Run [SimMorph_setup_templateDownload.R](https://github.com/raroston/SimMorph/blob/main/Scripts/setup_templateDownload.R) to download the Wong et al. (2012) reference image and labels and create the directory for baseline images.
