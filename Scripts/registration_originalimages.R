@@ -17,8 +17,8 @@ save.Jacobian = FALSE
 source("./Scripts/doRegistration.R")
 
 # Generate list of subjects to be registered
-if( dir.exists(dir.original, "/Transforms/")){
-  if( dir.exists(dir.original, "/Transforms/affine/")){
+if( dir.exists(paste0(dir.original, "/Transforms/"))){
+  if( dir.exists(paste0(dir.original, "/Transforms/affine/"))){
     done = dir(dir.original, "/Transforms/affine/")
     done = gsub("_Affine.mat", "", done)
     subjects = subjects[which(! subjects %in% done)]
