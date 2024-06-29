@@ -32,7 +32,7 @@ jacobianStats <- function(jacobians,
   betaImg = makeImage( mask, j_bmdl$beta ) * pMask
   
   print("Writing images")
-  if(save.pImg == TRUE){antsImageWrite(pImg, paste0(dir.out, filePrefix, "_pImg.nrrd"))}
-  if(save.betaImg == TRUE){antsImageWrite(betaImg, paste0(dir.out, filePrefix, "_betaImg.nrrd"))}
+  if(save.pImg == TRUE){antsImageWrite(pImg, paste0(dir.out, filePrefix, "_pImg.nii.gz"))}
+  if(save.betaImg == TRUE){antsImageWrite(betaImg, paste0(dir.out, filePrefix, "_betaImg.nii.gz"))}
   
 }
