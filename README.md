@@ -28,7 +28,8 @@ This repository contains data and scripts for "The use of morphological simulati
    - Calculate the heart volumes with [save_volstats.R](https://github.com/raroston/SimMorph/blob/main/Scripts/save_volstats.R)
 7. To plot heart volume results in a violin plot, use [plot_volstats.R](https://github.com/raroston/SimMorph/blob/main/Scripts/plot_volstats.R)
 
-### Tensor-based morphometry 
+### Tensor-based morphometry (TBM)
 8. Register the simulate morphology images to the reference image and calculate the Jacobian determinants with [registration_simulatedimages.R](https://github.com/raroston/SimMorph/blob/main/Scripts/registration_simulatedimages.R)
-9. To do the statistical analyses... This script produces images...
-10. To easily see if differences were detected, run...
+9. The sets of subjects to test minimum sample size and permutations in this study are located in "./Results/TBM". New sets can be generated with [save_MinSampleSets.R](https://github.com/raroston/SimMorph/blob/main/Scripts/save_MinSampleSets.R).
+10. To do the statistical analyses, run [TBM_MinSample_Permutations.R](https://github.com/raroston/SimMorph/blob/main/Scripts/TBM_MinSample_Permutations.R). This will generate image volumes.
+11. To determine if any differences were detected, run [TBMDetection.R](https://github.com/raroston/SimMorph/blob/main/Scripts/TBMDetection.R)

@@ -1,18 +1,14 @@
 # Calculate number of voxels detected in TBM results
 # Author: Rachel A. Roston, Ph.D.
-# Data: 2024-04-03
 
-remove(list = ls())
-gc()
-
+# Setup
 library(ANTsR)
 library(stringr)
 
-wd = "/home2/rachel/P01/syntheticdata/Github/SimMorph/Results/TBM/"
-setwd(wd)
+results = dir("./Results")
+permutations = dir("./Results/TBM/Permutation_N")
 
-permutations = dir(wd, "Permutation_N")
-
+# Calculations
 for(i in 1:length(permutations)){
   results = data.frame()
   imgs = list()
