@@ -10,5 +10,5 @@ download.file(url = "http://repo.mouseimaging.ca/repo/Embryo_Atlas_CT_E15.5_nift
               destfile = "./Data/Reference/Embryo_Atlas.nii", 
               method = "curl")
 download.file(url = "http://repo.mouseimaging.ca/repo/Embryo_Atlas_CT_E15.5_nifti/Embryo_Atlas_labels.nii", 
-              destfile = "SimMorph/Data/Reference/Embryo_Atlas_labels.nii", 
+              destfile = "./Data/Reference/Embryo_Atlas_labels.nii", 
               method = "curl")
