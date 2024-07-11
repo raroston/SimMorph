@@ -52,7 +52,7 @@ registerDoParallel(cl)
 foreach (i = 1:length(subjects)) %dopar% {doRegistration(subject = subjects[i],
                                                          ref.img.path = ref,
                                                          ref.lms.path = reflms,
-                                                         dir.imgs = images,
+                                                         dir.img = images,
                                                          dir.lms = landmarks,
                                                          dir.out = dir.original,
                                                          save.TotalTransforms = TRUE,
