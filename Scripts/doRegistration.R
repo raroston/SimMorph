@@ -14,7 +14,6 @@ doRegistration = function(subject,
   
   
   library(SlicerMorphR)
-  library(patchMatchR)
   library(ANTsR)
   
   
@@ -53,7 +52,7 @@ doRegistration = function(subject,
     affine = antsRegistration(fixed=ref.img, 
                               moving = tmp.img, 
                               typeofTransform = "Rigid", 
-                              initialTransform = lm.tx$transform)
+                              initialTransform = lm.tx)
     syn1 = antsRegistration(fixed=ref.img, 
                             moving = tmp.img, 
                             typeofTransform = "SyN", 

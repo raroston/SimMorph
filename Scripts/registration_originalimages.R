@@ -41,8 +41,8 @@ if(!all(file.exists(paste0("./Data/", original, "/", landmarks, "/", subjects, "
 # This will the registration 8 times (1:8) in batches of 4 (PSOCK cluster setting.)
 # Set up how many jobs are going to run in parallel & working directory
 
-Sys.setenv(ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS = 32)
-ncluster <- 4 # set up how many jobs run in parallel
+Sys.setenv(ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS = 16)
+ncluster <- 2 # set up how many jobs run in parallel
 nthreads <- 8 # limit number of cores for each task
 
 cl <- makePSOCKcluster(ncluster)
@@ -52,8 +52,8 @@ registerDoParallel(cl)
 foreach (i = 1:length(subjects)) %dopar% {doRegistration(subject = subjects[i],
                                                          ref.img.path = ref,
                                                          ref.lms.path = reflms,
-                                                         dir.img = images,
-                                                         dir.lms = landmarks,
+                                                         dir.img = paste0(dir.original, "/", images),
+                                                         dir.lms = paste0(dir.original, "/", landmarks),
                                                          dir.out = dir.original,
                                                          save.TotalTransforms = TRUE,
                                                          save.CT_transformed = TRUE,
