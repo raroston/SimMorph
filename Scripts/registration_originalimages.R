@@ -26,12 +26,12 @@ if( dir.exists(paste0(dir.original, "/Transforms/"))){
 }
 
 # Check files exist for all subjects
-if(!all(file.exists(paste0(images, subjects, ".nrrd")))){
+if(!all(file.exists(paste0("./Data/", original, "/", images, "/", subjects, "_baseline.nrrd")))){
   print("Missing images!")
   stop()
 }
 
-if(!all(file.exists(paste0(landmarks, subjects, ".mrk.json")))){
+if(!all(file.exists(paste0("./Data/", original, "/", landmarks, "/", subjects, "_baseline.mrk.json")))){
   print("Missing LMs!")
   stop()
 }
@@ -41,9 +41,9 @@ if(!all(file.exists(paste0(landmarks, subjects, ".mrk.json")))){
 # This will the registration 8 times (1:8) in batches of 4 (PSOCK cluster setting.)
 # Set up how many jobs are going to run in parallel & working directory
 
-Sys.setenv(ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS = 48)
+Sys.setenv(ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS = 32)
 ncluster <- 4 # set up how many jobs run in parallel
-nthreads <- 12 # limit number of cores for each task
+nthreads <- 8 # limit number of cores for each task
 
 cl <- makePSOCKcluster(ncluster)
 Sys.setenv(ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS = nthreads)
