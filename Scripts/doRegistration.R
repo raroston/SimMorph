@@ -127,11 +127,9 @@ doRegistration = function(subject,
     if(test == TRUE){
       print(paste0(dir.jacs, "/", jacs.file))
     } else {
-      for (i in 1:length(warps)){
-        tmp = createJacobianDeterminantImage( ref.img, syn1$fwdtransforms[1], doLog = TRUE, geom = TRUE )
-        jacs.tmp = smoothImage( tmp, 2*antsGetSpacing(ref.img)[1], FALSE ) #smooth the edges
-        antsImageWrite(image = jacs.tmp, 
-                       filename = paste0(dir.jacs, jacs.file))
-      }
+      tmp = createJacobianDeterminantImage( ref.img, syn1$fwdtransforms[1], doLog = TRUE, geom = TRUE )
+      jacs.tmp = smoothImage( tmp, 2*antsGetSpacing(ref.img)[1], FALSE ) #smooth the edges
+      antsImageWrite(image = jacs.tmp, 
+                     filename = paste0(dir.jacs, jacs.file))
     }
 }
