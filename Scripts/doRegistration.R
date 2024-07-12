@@ -122,7 +122,6 @@ doRegistration = function(subject,
     
     dir.jacs = paste0(dir.out, "/TBM")
     if(!dir.exists(dir.jacs)) dir.create(dir.jacs)
-    }
     
     if(test == TRUE){
       print(paste0(dir.jacs, "/", jacs.file))
@@ -132,4 +131,5 @@ doRegistration = function(subject,
       antsImageWrite(image = jacs.tmp, 
                      filename = paste0(dir.jacs, jacs.file))
     }
+  }
 }
