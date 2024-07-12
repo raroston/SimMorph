@@ -5,14 +5,13 @@ library(stringr)
 
 # Files and lists
 original = "baseline"
-simulations = read.csv("./ProjectDesign/experimentlist.csv")[,2]
-heart.sims = simulations[grep("Heart", simulations)]
+experiments = read.csv("./ProjectDesign/experimentlist.csv")
+heart.sims = experiments[grep("Heart", experiments$simulation),]
 subjects = read.csv("./ProjectDesign/subjects.csv")[,2]
 ref = "./Data/Reference/Embryo_Atlas.nii"
 reflms = "./Data/Reference/Embryo_Atlas.mrk.json"
 reflabels = "./Data/Reference/Embryo_Atlas_labels.nii"
 labelNames = read.csv("./ProjectDesign/komp_label_conversion.csv")
-heart.sims = read.csv("./ProjectDesign/experimentlist.csv")[1:7,2:4]
 samplesizes = seq(3,27,by = 3)
 
 # Directories
