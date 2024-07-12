@@ -9,25 +9,22 @@ library(SlicerMorphR)
 source("./Scripts/SimMorph_setup_variables.R")
 dir.deform = "./Deformations/LMs_merged"
 
-create.simdata = TRUE # if TRUE, simulated data will be generated from the simulated deformation
-copy.LMs = TRUE # if TRUE, LMs for registration initialization will be copied from original data
-
+simulations = experiments[which(experiments$createSimData == TRUE),]
 
 # GENERATE SIMULATED DATA
-for(j in 1:length(simulations)){
-  dir.sim = paste0("./Data/", simulations[j])
+for(j in 1:nrow(simulations)){
+  dir.sim = paste0("./Data/", simulations[j, "simulation"])
   
   if(!dir.exists(dir.sim)) dir.create(dir.sim)
-  if(!dir.exists(paste0(dir.sim, images))) dir.create(paste0(dir.sim, "/", images))
-  if(!dir.exists(paste0(dir.sim, landmarks))) dir.create(paste0(dir.sim, "/", landmarks))
+  if(!dir.exists(paste0(dir.sim, "/", images))) dir.create(paste0(dir.sim, "/", images))
+  if(!dir.exists(paste0(dir.sim, "/", landmarks))) dir.create(paste0(dir.sim, "/", landmarks))
   
-  if(create.simdata == TRUE){
-    # Create simulated deformation from unmodified pseudoLMs and modified pseudoLMs using bSpline
+    # Create simulated deformation from unmobdified pseudoLMs and modified pseudoLMs using bSpline
     originalLMs = read.markups.json(dir(dir.deform,
-                                        pattern = paste0(simulations[j], "_og"),
+                                        pattern = paste0(simulations[j, "simulation"], "_og"),
                                         full.names = TRUE))
     modLMs = read.markups.json(dir(dir.deform,
-                                   pattern = paste0(simulation[j], "_def"),
+                                   pattern = paste0(simulations[j, "simulation"], "_def"),
                                    full.names = TRUE))
     
     
@@ -45,7 +42,7 @@ for(j in 1:length(simulations)){
                                                reference = ref.img, 
                                                interpolation = "bspline")
     antsImageWrite(d.ref.img, 
-                   filename = paste0("./Data/Reference/", simulations[j], "-","ref.nrrd"))
+                   filename = paste0("./Data/Reference/", simulations[j, "simulation"], "-","ref.nrrd"))
     
     # Apply simulated deformation transform to subjects in reference image space
     affine.tx = vector()
@@ -90,17 +87,16 @@ for(j in 1:length(simulations)){
                                 transformlist = c(affine.tx[i], inv.tx[i]),
                                 "linear")
       tmp = tmp*255
-      antsImageWrite(tmp, filename = paste0(dir.sim, "/", images, "/", subjects[i], "_", simulations[j], ".nrrd"))
+      antsImageWrite(tmp, filename = paste0(dir.sim, "/", images, "/", subjects[i], "_", simulations[j, "simulation"], ".nrrd"))
     }
-  }
+  
     
   # copy original LMs for registration initialization
   # NOTE: only do this if the simulation does not affect landmark placement
-  if(copy.LMs == TRUE){
+  if(simulations$copy.LMs[j] == TRUE){
     for(i in 1:length(subjects)){
-      file.copy(from = paste0(dir.original, landmarks, "/", subjects[i], "_", original, ".mrk.json"),
-                to =paste0(dir.sim, "/", landmarks, "/", subjects[i], "_", simulations[j], ".mrk.json"))
+      file.copy(from = paste0(dir.original, "/", landmarks, "/", subjects[i], "_", original, ".mrk.json"),
+                to =paste0(dir.sim, "/", landmarks, "/", subjects[i], "_", simulations[j, "simulation"], ".mrk.json"))
     }
   }
-
 }
