@@ -1,9 +1,9 @@
-,simulation,heartscale_percentoriginal,est_heartscale,description
-1,baseline,100,100%,original
-2,Heart173,173,~173%,heart ventricle volume x173%
-3,Heart133,133,~133%,heart ventricle volume x133%
-4,Heart116,116,~116%,heart ventricle volume x116%
-5,Heart51,51,~51%,heart ventricle volume x51%
-6,Heart73,73,~73%,heart ventricle volume x73%
-7,Heart85,85,~85%,heart ventricle volume x85%
-8,Rostrum120,NA,NA,rostrum length x120%
+,simulation,heartscale_percentoriginal,est_heartscale,description,copy.LMs,createSimData
+1,baseline,100,100%,original,NA,FALSE
+2,Heart173,173,~173%,heart ventricle volume x173%,TRUE,TRUE
+3,Heart133,133,~133%,heart ventricle volume x133%,TRUE,TRUE
+4,Heart116,116,~116%,heart ventricle volume x116%,TRUE,TRUE
+5,Heart51,51,~51%,heart ventricle volume x51%,TRUE,TRUE
+6,Heart73,73,~73%,heart ventricle volume x73%,TRUE,TRUE
+7,Heart85,85,~85%,heart ventricle volume x85%,TRUE,TRUE
+8,Rostrum120,NA,NA,rostrum length x120%,FALSE,TRUE
